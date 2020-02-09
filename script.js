@@ -19,6 +19,7 @@ function loadStudents(studentNames) {
     link.setAttribute("house", student.house);
     link.onclick = function() {
       showDetails(this);
+      console.log(student.house);
     };
 
     // append copy to section
@@ -26,20 +27,20 @@ function loadStudents(studentNames) {
   });
 }
 
-// select theme and change color
+// select theme
 document.querySelector("select#theme").addEventListener("change", selected);
 
+// change theme
 function selected() {
   const selectedTheme = this.value;
   document.querySelector(".modal_content").style.setProperty("background-color", "var(--theme-" + this.value + ")");
-  console.log(this.value);
+  document.querySelector(".modal_name").style.setProperty("font-size", "100px");
 }
 
-// the modal
+// the modal information
 function showDetails(data) {
   modal.querySelector(".modal_name").textContent = data.getAttribute("name");
   modal.querySelector(".modal_house").textContent = data.getAttribute("house");
-  document.querySelector(".modal_content").style.setProperty("background-color", "var(--theme)");
   modal.style.display = "block";
 }
 
