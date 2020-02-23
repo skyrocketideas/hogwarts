@@ -14,19 +14,19 @@
 }
 
 [data-theme="Hufflepuff"] {
-  --primary-color: red;
+  --primary-color: #f7e13d;
 }
 
 [data-theme="Gryffindor"] {
-  --primary-color: green;
+  --primary-color: #d7180a;
 }
 
 [data-theme="Ravenclaw"] {
-  --primary-color: purple;
+  --primary-color: #1b2197;
 }
 
 [data-theme="Slytherin"] {
-  --primary-color: hotpink;
+  --primary-color: #00a23a;
 }
 
 /* set border box and all styles */
