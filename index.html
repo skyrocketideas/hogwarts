@@ -14,11 +14,17 @@
       <h1>Hogwarts</h1>
       <h2>Students</h2>
     </header>
+    <section class="student_house_filter">
+      Filter:
+      <button class="filter" data-action="filter" data-filter="gryffindor">Only Gryffindor</button>
+    </section>
+    <section class="student_stats">Student Stats</section>
+    <input class="search_bar" type="search" value="" placeholder="search student">
       <section id="student_section">
       <template>
         <article class="single_student">
           <!-- <a href="#"> -->
-            <img src="img/avatars/bones_s.png" alt="student avatar" />
+            <!-- <img class="student_image" src="" alt="student avatar" /> -->
             <h3 class="first_name"></h3>
             <h3 class="middle_name"></h3>
             <h3 class="last_name"></h3>
@@ -32,7 +38,7 @@
     </main>
   </div>
 
-<!-- The Modal -->
+<!-- the modal -->
 <div id="myModal" class="modal">
   <div class="modal_content" data-theme="">
       <span class="close">&times;</span>
@@ -41,7 +47,9 @@
       <h3 class="modal_last_name"></h3>
       <h3 class="modal_nick_name"></h3>
       <h3 class="modal_house"></h3>
-      <img src="img/crests/crest.jpg" width=100px>
+      <img class="modal_crest" src="" alt="student crest" width=100px>
+      <img class="modal_image" src="" alt="student avatar" />
+      <button>Expel student</button>
   </div>
 </div>
 </div>

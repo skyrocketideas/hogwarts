@@ -111,7 +111,7 @@ header {
   background-color: #fff;
   margin: auto;
   padding: 2rem;
-  border: 0.5rem solid var(--primary-color);
+  border: 1.5rem solid var(--primary-color);
   width: 80%;
 }
 

@@ -10,7 +10,8 @@ const studentName = {
   middleName: "",
   nickName: "",
   house: "",
-  image: null
+  image: null,
+  crest: null
 };
 
 // function fetch students from API
@@ -60,8 +61,11 @@ function fixStudents(studentList) {
       student.nickName = capitalizeFirstLetter(fullname[3]);
     }
 
-    // add student image
-    student.image = "http://www.lovethatwillnotdie.com/avatars/" + student.lastName.toLowerCase() + "_" + student.firstName[0].toLowerCase() + ".png";
+    // add student avatar photo
+    student.image = "http://www.lovethatwillnotdie.com/hogwarts/avatars/" + student.lastName.toLowerCase() + "_" + student.firstName[0].toLowerCase() + ".png";
+
+    // add student house crest
+    student.crest = "http://www.lovethatwillnotdie.com/hogwarts/crests/" + student.house.toLowerCase() + ".png";
 
     // add fixed student to allStudents array
     allStudents.push(student);
@@ -88,7 +92,6 @@ function showStudents(studentName) {
   studentCopy.querySelector(".last_name").textContent = studentName.nickName;
   studentCopy.querySelector(".nick_name").textContent = studentName.lastName;
   studentCopy.querySelector(".house").textContent = studentName.house;
-  studentCopy.querySelector(".student_image").src = studentName.image;
   studentCopy.querySelector("button").addEventListener("click", () => {
     modal.classList.remove("hide");
     modal.style.display = "block";
@@ -98,8 +101,23 @@ function showStudents(studentName) {
     modal.querySelector(".modal_nick_name").textContent = studentName.nickName;
     modal.querySelector(".modal_house").textContent = studentName.house;
     modal.querySelector(".modal_content").dataset.theme = studentName.house;
+    modal.querySelector(".modal_image").src = studentName.image;
+    modal.querySelector(".modal_crest").src = studentName.crest;
   });
   document.querySelector("#student_section").appendChild(studentCopy);
+}
+
+// start function to listen for filter Gryffindor
+function filterButtons() {
+  console.log("filterButtons");
+  document.querySelector("[data-filter='gryffindor']").addEventListener("click", filterGryffindor);
+}
+filterButtons();
+
+// function to filter Gryffindor students only
+function filterGryffindor() {
+  console.log("filterGryffindor");
+  const onlyGryffindor = allStudents.filter(studentName.house === "gryffindor");
 }
 
 // get modal
