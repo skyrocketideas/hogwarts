@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
-    <title>Student List</title>
+    <title>Hogwarts</title>
   </head>
   <body>
     <main>
@@ -15,11 +15,17 @@
       <h2>Students</h2>
     </header>
       <section id="student_section">
-      <template class="student_list">
+      <template>
         <article class="single_student">
-          <a href="#">
-            <h3 class="name"></h3>
-          </a>
+          <!-- <a href="#"> -->
+            <img src="img/avatars/bones_s.png" alt="student avatar" />
+            <h3 class="first_name"></h3>
+            <h3 class="middle_name"></h3>
+            <h3 class="last_name"></h3>
+            <h3 class="nick_name"></h3>
+            <h3 class="house"></h3>
+            <button>See more</button>
+          <!-- </a> -->
         </article>
       </template>
 </section>
@@ -28,20 +34,14 @@
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-  <!-- Modal content -->
-  <div class="modal_content">
+  <div class="modal_content" data-theme="">
       <span class="close">&times;</span>
-      <label id="theme-changer">
-        Choose theme -
-        <select name="theme" id="theme">
-          <option value="gryffindor">Griffindor theme</option>
-          <option value="hufflepuff">Hufflepuff theme</option>
-          <option value="ravenclaw">Ravenclaw theme</option>
-          <option value="slytherin">Slytherin theme</option>
-        </select>
-      </label>
-      <h3 class="modal_name"></h3>
+      <h3 class="modal_first_name"></h3>
+      <h3 class="modal_middle_name"></h3>
+      <h3 class="modal_last_name"></h3>
+      <h3 class="modal_nick_name"></h3>
       <h3 class="modal_house"></h3>
+      <img src="img/crests/crest.jpg" width=100px>
   </div>
 </div>
 </div>

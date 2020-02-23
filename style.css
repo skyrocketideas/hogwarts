@@ -7,15 +7,26 @@
   --secondary-color: #ffd940;
   --tertiary-color: #09b3a0;
   --link-color: green;
-  --theme: darkred;
-  --theme-gryffindor: hotpink;
-  --theme-hufflepuff: red;
-  --theme-ravenclaw: green;
-  --theme-slytherin: orange;
   --primary-font: "Libre Baskerville", serif;
   --secondary-font: "Arial", sans-serif;
   --animation: fadein 2s ease-in-out 0.2s 1 normal forwards;
   --line-height: 2rem;
+}
+
+[data-theme="Hufflepuff"] {
+  --primary-color: red;
+}
+
+[data-theme="Gryffindor"] {
+  --primary-color: green;
+}
+
+[data-theme="Ravenclaw"] {
+  --primary-color: purple;
+}
+
+[data-theme="Slytherin"] {
+  --primary-color: hotpink;
 }
 
 /* set border box and all styles */
@@ -126,4 +137,8 @@ header {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.hide {
+  display: none;
 }
