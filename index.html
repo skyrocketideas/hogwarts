@@ -9,31 +9,39 @@
   </head>
   <body>
     <main>
+
+      <!-- grid wrapper -->
       <div class="container_grid">
+
+        <!-- header -->
         <header>
       <h1>Hogwarts</h1>
       <h2>Students</h2>
     </header>
+
+    <!-- filter section -->
     <section class="student_house_filter">
-      Filter:
-      <button class="filter" data-action="filter" data-filter="gryffindor">Only Gryffindor</button>
+      <h3>Filter</h3>
+      <button class="filter" data-action="filter" data-filter="*">all</button>
+      <button class="filter" data-action="filter" data-filter="gryffindor">gryffindor</button>
+      <button class="filter" data-action="filter" data-filter="ravenclaw">ravenclaw</button>
+      <button class="filter" data-action="filter" data-filter="hufflepuff">hufflepuff</button>
+      <button class="filter" data-action="filter" data-filter="slytherin">slytherin</button>
     </section>
-    <section class="student_stats">Student Stats</section>
+
+    <!-- student statistics section -->
+    <section class="student_stats">
+      <h3>statistics</h3>
+    </section>
+
+    <!-- search section -->
+    <section class="search_section">
+      <h3>search</h3>
     <input class="search_bar" type="search" value="" placeholder="search student">
+  </section>
+
+  <!-- student section -->
       <section id="student_section">
-      <template>
-        <article class="single_student">
-          <!-- <a href="#"> -->
-            <!-- <img class="student_image" src="" alt="student avatar" /> -->
-            <h3 class="first_name"></h3>
-            <h3 class="middle_name"></h3>
-            <h3 class="last_name"></h3>
-            <h3 class="nick_name"></h3>
-            <h3 class="house"></h3>
-            <button>See more</button>
-          <!-- </a> -->
-        </article>
-      </template>
 </section>
     </main>
   </div>
@@ -53,6 +61,19 @@
   </div>
 </div>
 </div>
+
+<!-- the template -->
+<template>
+  <article class="single_student">
+      <h3 class="first_name"></h3>
+      <h3 class="middle_name"></h3>
+      <h3 class="last_name"></h3>
+      <h3 class="nick_name"></h3>
+      <h3 class="house"></h3>
+      <button>See more</button>
+  </article>
+</template>
+
     <script src="script.js"></script>
   </body>
 </html>
