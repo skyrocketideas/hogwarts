@@ -19,11 +19,14 @@ const studentName = {
   crest: null
 };
 
+// object prototype for blood types
+const bloodType = {};
+
 // start function to listen for events
 function start() {
   console.log("start");
   document.querySelector("[data-filter='gryffindor']").addEventListener("click", filterGryffindor);
-  // document.querySelector("[data-filter='ravenclaw']").addEventListener("click", filterRavenclaw);
+  document.querySelector("[data-filter='ravenclaw']").addEventListener("click", filterRavenclaw);
   // document.querySelector("[data-filter='gryffindor']").addEventListener("click", filterHufflepuff);
   // document.querySelector("[data-filter='gryffindor']").addEventListener("click", filterSlytherin);
   getStudents();
@@ -35,27 +38,28 @@ function getStudents() {
   fetch("https://petlatkea.dk/2020/hogwarts/students.json")
     .then(res => res.json())
     .then(fixStudents);
-  // getFamilies();
+  getFamilies();
 }
 
 // function fetch families from API
-// function getFamilies() {
-//   console.log("getFamilies");
-//   fetch("https://petlatkea.dk/2020/hogwarts/families.json")
-//     .then(res => res.json())
-//     .then(buildFamilyList);
-// }
+function getFamilies() {
+  console.log("getFamilies");
+  fetch("https://petlatkea.dk/2020/hogwarts/families.json")
+    .then(res => res.json())
+    .then(buildFamilyList);
+}
 
-// function buildFamilyList() {
-//   console.log("family list built");
-//   console.log(buildFamilyList);
-// }
+function buildFamilyList(families) {
+  console.log("buildFamilyList");
+  // families.forEach(jsonObject => {
+  //   let family = Object.create(bloodType);
+  // });
+}
 
 // function to clean up student list
 function fixStudents(studentList) {
   // console.log("fixStudents");
   studentList.forEach(jsonObject => {
-    // console.log(jsonObject);
     // create new student object from 'studentName' prototype
     let student = Object.create(studentName);
     // for full name - trim whitespace, change to lowercase, replace characters, split at spaces
@@ -88,7 +92,6 @@ function fixStudents(studentList) {
     student.crest = "http://www.lovethatwillnotdie.com/hogwarts/crests/" + student.house.toLowerCase() + ".png";
     // add fixed student to allStudents array
     allStudents.push(student);
-    // console.log(student);
   });
   // show fixed students
   allStudents.forEach(showStudents);
@@ -98,12 +101,6 @@ function fixStudents(studentList) {
 function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-// function isGryffindor(studentName) {
-//   console.log("isGryffindor");
-//   return studentName.house === "gryffindor";
-// }
-
 // function to filter only Gryffindor
 function filterGryffindor(student) {
   console.log("filterGryffindor");
@@ -112,10 +109,21 @@ function filterGryffindor(student) {
       filteredStudentsArray.push(student);
     }
   });
-  // showStudents(filteredStudentsArray);
   // clear the list
   document.querySelector("#student_section").innerHTML = "";
-  // console.log(filteredStudentsArray);
+  filteredStudentsArray.forEach(showStudents);
+}
+
+// function to filter only Ravenclaw
+function filterRavenclaw(student) {
+  console.log("filterRavenclaw");
+  allStudents.forEach(student => {
+    if (student.house.toLowerCase() === "ravenclaw") {
+      filteredStudentsArray.push(student);
+    }
+  });
+  // clear the list
+  document.querySelector("#student_section").innerHTML = "";
   filteredStudentsArray.forEach(showStudents);
 }
 
@@ -124,7 +132,6 @@ function showStudents(studentName) {
   console.log("showStudents");
   const template = document.querySelector("template").content;
   const studentCopy = template.cloneNode(true);
-  const modal = document.getElementById("myModal");
   studentCopy.querySelector(".first_name").textContent = studentName.firstName;
   studentCopy.querySelector(".middle_name").textContent = studentName.middleName;
   studentCopy.querySelector(".last_name").textContent = studentName.nickName;
