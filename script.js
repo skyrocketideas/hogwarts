@@ -1,3 +1,5 @@
+"use strict";
+
 window.addEventListener("DOMContentLoaded", start);
 
 // global array for fixed students
@@ -129,38 +131,33 @@ function showStudents(studentName) {
   studentCopy.querySelector(".nick_name").textContent = studentName.lastName;
   studentCopy.querySelector(".house").textContent = studentName.house;
   studentCopy.querySelector("button").addEventListener("click", () => {
-    modal.classList.remove("hide");
-    modal.style.display = "block";
-    modal.querySelector(".modal_first_name").textContent = studentName.firstName;
-    modal.querySelector(".modal_middle_name").textContent = studentName.middleName;
-    modal.querySelector(".modal_last_name").textContent = studentName.lastName;
-    modal.querySelector(".modal_nick_name").textContent = studentName.nickName;
-    modal.querySelector(".modal_house").textContent = studentName.house;
-    modal.querySelector(".modal_content").dataset.theme = studentName.house;
-    modal.querySelector(".modal_image").src = studentName.image;
-    modal.querySelector(".modal_crest").src = studentName.crest;
+    getModal(studentName);
   });
   document.querySelector("#student_section").appendChild(studentCopy);
 }
 
 // function to call modal
-// function getModal() {}
-
-// get modal
-const modal = document.getElementById("myModal");
-modal.addEventListener("click", () => {
-  modal.classList.add("hide");
-});
-
-// get element that closes the modal
-const span = document.getElementsByClassName("close")[0];
-span.onclick = () => {
-  modal.style.display = "none";
-};
-
-// close modal - click anywhere outside
-window.onclick = function(event) {
-  if (event.target == modal) {
+function getModal(studentName) {
+  const modal = document.getElementById("myModal");
+  const span = document.getElementsByClassName("close")[0];
+  modal.classList.remove("hide");
+  modal.style.display = "block";
+  modal.querySelector(".modal_first_name").textContent = studentName.firstName;
+  modal.querySelector(".modal_middle_name").textContent = studentName.middleName;
+  modal.querySelector(".modal_last_name").textContent = studentName.lastName;
+  modal.querySelector(".modal_nick_name").textContent = studentName.nickName;
+  modal.querySelector(".modal_house").textContent = studentName.house;
+  modal.querySelector(".modal_content").dataset.theme = studentName.house;
+  modal.querySelector(".modal_image").src = studentName.image;
+  modal.querySelector(".modal_crest").src = studentName.crest;
+  // close modal by clicking on X
+  span.onclick = () => {
     modal.style.display = "none";
-  }
-};
+  };
+  // close modal by clicking anywhere outside
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}
