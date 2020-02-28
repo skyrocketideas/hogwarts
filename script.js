@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", start);
 
 // global array for fixed students
 const allStudents = [];
-const filteredStudentsArray = [];
+let filteredStudentsArray = [];
 const halfBloodStudents = [];
 const fullBloodStudents = [];
 
@@ -27,8 +27,8 @@ function start() {
   console.log("start");
   document.querySelector("[data-filter='gryffindor']").addEventListener("click", filterGryffindor);
   document.querySelector("[data-filter='ravenclaw']").addEventListener("click", filterRavenclaw);
-  // document.querySelector("[data-filter='gryffindor']").addEventListener("click", filterHufflepuff);
-  // document.querySelector("[data-filter='gryffindor']").addEventListener("click", filterSlytherin);
+  document.querySelector("[data-filter='hufflepuff']").addEventListener("click", filterHufflepuff);
+  document.querySelector("[data-filter='slytherin']").addEventListener("click", filterSlytherin);
   getStudents();
 }
 
@@ -91,6 +91,7 @@ function fixStudents(studentList) {
     // add student house crest
     student.crest = "http://www.lovethatwillnotdie.com/hogwarts/crests/" + student.house.toLowerCase() + ".png";
     // add fixed student to allStudents array
+    document.querySelector("#student_section").innerHTML = "";
     allStudents.push(student);
   });
   // show fixed students
@@ -101,8 +102,10 @@ function fixStudents(studentList) {
 function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
 // function to filter only Gryffindor
 function filterGryffindor(student) {
+  filteredStudentsArray = [];
   console.log("filterGryffindor");
   allStudents.forEach(student => {
     if (student.house.toLowerCase() === "gryffindor") {
@@ -116,9 +119,38 @@ function filterGryffindor(student) {
 
 // function to filter only Ravenclaw
 function filterRavenclaw(student) {
+  filteredStudentsArray = [];
   console.log("filterRavenclaw");
   allStudents.forEach(student => {
     if (student.house.toLowerCase() === "ravenclaw") {
+      filteredStudentsArray.push(student);
+    }
+  });
+  // clear the list
+  document.querySelector("#student_section").innerHTML = "";
+  filteredStudentsArray.forEach(showStudents);
+}
+
+// function to filter only Hufflepuff
+function filterHufflepuff(student) {
+  filteredStudentsArray = [];
+  console.log("filterHufflepuff");
+  allStudents.forEach(student => {
+    if (student.house.toLowerCase() === "hufflepuff") {
+      filteredStudentsArray.push(student);
+    }
+  });
+  // clear the list
+  document.querySelector("#student_section").innerHTML = "";
+  filteredStudentsArray.forEach(showStudents);
+}
+
+// function to filter only Slytherin
+function filterSlytherin(student) {
+  filteredStudentsArray = [];
+  console.log("filterSlytherin");
+  allStudents.forEach(student => {
+    if (student.house.toLowerCase() === "slytherin") {
       filteredStudentsArray.push(student);
     }
   });
