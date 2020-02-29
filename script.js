@@ -5,6 +5,7 @@ window.addEventListener("DOMContentLoaded", start);
 const allStudents = [];
 let filteredStudentsArray = [];
 let expelledStudents = [];
+let prefectStudents = [];
 const missingPhoto = "";
 
 // statistics variables arrays
@@ -18,11 +19,12 @@ const studentsDisplayed = [];
 // object prototype for fixed students
 const studentName = {
 	firstName: "",
-	lastName: "",
 	middleName: "",
+	lastName: "",
 	nickName: "",
 	house: "",
 	expelled: false,
+	prefect: false,
 	image: null,
 	crest: null
 };
@@ -92,8 +94,8 @@ function fixStudents(studentList) {
 			student.lastName = capitalizeFirstLetter(fullname[1]);
 			// if full name is equal to 3 strings - capitalize first letter of 2nd and 3rd strings
 		} else if (fullname.length == 3) {
-			student.lastName = capitalizeFirstLetter(fullname[1]);
-			student.middleName = capitalizeFirstLetter(fullname[2]);
+			student.lastName = capitalizeFirstLetter(fullname[2]);
+			student.middleName = capitalizeFirstLetter(fullname[1]);
 			// if full name is equal to 4 strings - capitalize first letter of 2nd, 3rd and 4th strings
 		} else if (fullname.length == 4) {
 			student.middleName = capitalizeFirstLetter(fullname[1]);
@@ -271,9 +273,9 @@ function showStudents(studentName) {
 	const studentCopy = template.cloneNode(true);
 	studentCopy.querySelector(".first_name").textContent = studentName.firstName;
 	studentCopy.querySelector(".middle_name").textContent = studentName.middleName;
-	studentCopy.querySelector(".last_name").textContent = studentName.nickName;
-	studentCopy.querySelector(".nick_name").textContent = studentName.lastName;
-	studentCopy.querySelector(".house").textContent = studentName.house;
+	studentCopy.querySelector(".last_name").textContent = studentName.lastName;
+	// studentCopy.querySelector(".nick_name").textContent = studentName.lastName;
+	// studentCopy.querySelector(".house").textContent = studentName.house;
 	studentCopy.querySelector("button").addEventListener("click", () => {
 		getModal(studentName);
 	});
@@ -296,7 +298,10 @@ function getModal(studentName) {
 	modal.querySelector(".modal_image").src = studentName.image;
 	modal.querySelector(".modal_crest").src = studentName.crest;
 	modal.querySelector("#expelButton").addEventListener("click", () => {
-		expelStudent(studentName);
+		expelStudent();
+	});
+	modal.querySelector("#makePrefect").addEventListener("click", () => {
+		makePrefect();
 	});
 
 	// close modal by clicking on X
@@ -312,10 +317,17 @@ function getModal(studentName) {
 }
 
 function expelStudent(student) {
+	console.log("expelStudent");
 	const indexOfStudent = allStudents.indexOf(student);
 	expelledStudents.push(student);
 	allStudents.splice(indexOfStudent, 1);
 	// console.log(allStudents);
-	const numberOfExpelled = expelledStudents.length;
-	document.getElementById("expelledStudents").textContent = numberOfExpelled;
+	// const numberOfExpelled = expelledStudents.length;
+	// document.getElementById("expelledStudents").textContent = numberOfExpelled;
+}
+
+function makePrefect(student) {
+	console.log("makePrefect");
+	prefectStudents.push(student);
+	console.log(prefectStudents);
 }
