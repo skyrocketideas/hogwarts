@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap");
 
-/* setup variables*/
+/* setup custom properties */
 :root {
   --bg-color: #61005a;
   --primary-color: #14ccb8;
@@ -13,6 +13,7 @@
   --line-height: 2rem;
 }
 
+/* data themes for houses */
 [data-theme="Hufflepuff"] {
   --primary-color: #f7e13d;
 }
@@ -36,6 +37,7 @@
   padding: 0;
 }
 
+/* apply body style */
 body {
   font-family: var(--secondary-font);
   background: var(--bg-color);
@@ -43,6 +45,7 @@ body {
   margin: 0 auto;
 }
 
+/* apply heading styles */
 h1,
 h2 {
   font-family: var(--primary-font);
@@ -57,6 +60,7 @@ h3 {
   font-family: var(--primary-font);
 }
 
+/* apply link style */
 a {
   text-decoration: none;
   font-family: var(--primary-font);
@@ -67,22 +71,31 @@ a:hover {
   color: var(--tertiary-color);
 }
 
+/* button style */
+button {
+  padding: 0.5rem;
+}
+
+/* main grid wrapper */
 .container_grid {
   display: grid;
   grid-template-columns: 1fr;
 }
 
+/* header style */
 header {
   text-align: center;
   margin-top: 3rem;
 }
 
+/* student list grid */
 #student_section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   margin: 2rem;
 }
 
+/* single student style */
 .single_student {
   background: var(--secondary-color);
   margin: 1rem;
@@ -124,7 +137,7 @@ header {
   margin-top: 0.5rem;
 }
 
-/* close button */
+/* modal close button */
 .close {
   color: var(--tertiary-color);
   float: right;
@@ -139,6 +152,7 @@ header {
   cursor: pointer;
 }
 
+/* hide class for modal */
 .hide {
   display: none;
 }
