@@ -88,6 +88,17 @@ header {
   margin-top: 3rem;
 }
 
+.student_stats {
+  color: yellow;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 1rem;
+}
+
+.student_stats > h3 {
+  grid-column: 1 / -1;
+}
+
 /* student list grid */
 #student_section {
   display: grid;
