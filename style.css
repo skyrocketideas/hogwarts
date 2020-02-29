@@ -71,9 +71,24 @@ a:hover {
 	color: var(--tertiary-color);
 }
 
-/* button style */
+/* button styles */
 button {
-	padding: 0.5rem;
+	padding: 1rem;
+	border: 0;
+}
+
+button:hover,
+button:focus {
+	background: var(--primary-color);
+}
+
+button:focus {
+	outline: 2px solid var(--secondary-color);
+	outline-offset: -6px;
+}
+
+button:active {
+	transform: scale(0.9);
 }
 
 /* main grid wrapper */
@@ -98,6 +113,21 @@ header {
 	box-shadow: 14px 13px 0px -4px var(--tertiary-color);
 }
 
+/* filter section style */
+.student_house_filter {
+	grid-template-columns: 1/-1;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	grid-gap: 1rem;
+	padding: 2rem;
+}
+
+.student_house_filter h3 {
+	grid-template-columns: 1/-1;
+	background: yellow;
+}
+
+/* table heading style */
 th {
 	grid-column: 1 / -1;
 }
