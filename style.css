@@ -73,7 +73,8 @@ a:hover {
 
 /* button styles */
 button {
-	padding: 1rem;
+	padding: 0.5rem;
+	margin: 0rem;
 	border: 0;
 }
 
@@ -142,6 +143,7 @@ th {
 /* single student style */
 .single_student {
 	background: var(--secondary-color);
+	display: grid;
 	margin: 1rem;
 	padding: 1rem;
 	box-shadow: 14px 13px 0px -4px var(--tertiary-color);
@@ -159,17 +161,44 @@ th {
 	height: 100%;
 	overflow: auto;
 	/* Enable scroll if needed */
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.5);
 	/* Black w/ opacity */
 }
 
 /* modal content */
 .modal_content {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	background-color: #fff;
 	margin: auto;
 	padding: 2rem;
 	border: 1.5rem solid var(--primary-color);
 	width: 80%;
+}
+
+.modal_content .close {
+	grid-column: -1;
+	grid-row: 1;
+}
+
+.modal_crest {
+	grid-column: 1;
+	grid-row: 1;
+	height: 100px;
+	width: auto;
+}
+
+.modal_image {
+	grid-column: 2;
+}
+
+.modal_first_name,
+.modal_middle_name,
+.modal_last_name,
+.modal_nick_name,
+.modal_blood,
+.modal_house {
+	grid-column: 3/4;
 }
 
 .modal_name {
