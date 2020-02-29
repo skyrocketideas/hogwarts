@@ -19,16 +19,6 @@
       <h2>Students</h2>
     </header>
 
-    <!-- filter section -->
-    <section class="student_house_filter">
-      <h3>Filter</h3>
-      <button class="filter" data-action="filter" data-filter="*">all</button>
-      <button class="filter" data-action="filter" data-filter="gryffindor">gryffindor</button>
-      <button class="filter" data-action="filter" data-filter="ravenclaw">ravenclaw</button>
-      <button class="filter" data-action="filter" data-filter="hufflepuff">hufflepuff</button>
-      <button class="filter" data-action="filter" data-filter="slytherin">slytherin</button>
-    </section>
-
     <!-- student statistics section -->
     <section class="student_stats">
       <table>
@@ -39,8 +29,8 @@
         </thead>
      <tbody>
        <tr>
-      <td>total students</td>
-      <td id="numberInAll"></td>
+         <td>total students</td>
+         <td id="numberInAll"></td>
        </tr>
        <tr>
         <td>gryffindor</td>
@@ -58,8 +48,22 @@
          <td>slytherin</td>
          <td id="numberInSlytherin"></td>
        </tr>
+       <tr>
+        <td>expelled</td>
+        <td id="expelledStudents"></td>
+      </tr>
     </tbody>
     </table>
+    </section>
+
+    <!-- filter section -->
+    <section class="student_house_filter">
+      <h3>Filter</h3>
+      <button class="filter" data-action="filter" data-filter="*">all students</button>
+      <button class="filter" data-action="filter" data-filter="gryffindor">gryffindor</button>
+      <button class="filter" data-action="filter" data-filter="ravenclaw">ravenclaw</button>
+      <button class="filter" data-action="filter" data-filter="hufflepuff">hufflepuff</button>
+      <button class="filter" data-action="filter" data-filter="slytherin">slytherin</button>
     </section>
 
     <!-- search section -->
@@ -86,8 +90,8 @@
       <h3 class="modal_blood"></h3>
       <img class="modal_crest" src="" alt="student crest" width=100px>
       <img class="modal_image" src="" alt="student avatar" />
-      <button>Expel student</button>
-      <button>Make Prefect</button>
+      <button id="expelButton">Expel student</button>
+      <button id="makePrefect">Make Prefect</button>
   </div>
 </div>
 </div>
