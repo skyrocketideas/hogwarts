@@ -2,168 +2,171 @@
 
 /* setup custom properties */
 :root {
-  --bg-color: #61005a;
-  --primary-color: #14ccb8;
-  --secondary-color: #ffd940;
-  --tertiary-color: #09b3a0;
-  --link-color: green;
-  --primary-font: "Libre Baskerville", serif;
-  --secondary-font: "Arial", sans-serif;
-  --animation: fadein 2s ease-in-out 0.2s 1 normal forwards;
-  --line-height: 2rem;
+	--bg-color: #61005a;
+	--primary-color: #14ccb8;
+	--secondary-color: #ffd940;
+	--tertiary-color: #09b3a0;
+	--link-color: green;
+	--primary-font: "Libre Baskerville", serif;
+	--secondary-font: "Arial", sans-serif;
+	--animation: fadein 2s ease-in-out 0.2s 1 normal forwards;
+	--line-height: 2rem;
 }
 
 /* data themes for houses */
 [data-theme="Hufflepuff"] {
-  --primary-color: #f7e13d;
+	--primary-color: #f7e13d;
 }
 
 [data-theme="Gryffindor"] {
-  --primary-color: #d7180a;
+	--primary-color: #d7180a;
 }
 
 [data-theme="Ravenclaw"] {
-  --primary-color: #1b2197;
+	--primary-color: #1b2197;
 }
 
 [data-theme="Slytherin"] {
-  --primary-color: #00a23a;
+	--primary-color: #00a23a;
 }
 
 /* set border box and all styles */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 /* apply body style */
 body {
-  font-family: var(--secondary-font);
-  background: var(--bg-color);
-  max-width: 1200px;
-  margin: 0 auto;
+	font-family: var(--secondary-font);
+	background: var(--bg-color);
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
 /* apply heading styles */
 h1,
 h2 {
-  font-family: var(--primary-font);
-  color: var(--primary-color);
+	font-family: var(--primary-font);
+	color: var(--primary-color);
 }
 
 h1 {
-  text-transform: uppercase;
+	text-transform: uppercase;
 }
 
 h3 {
-  font-family: var(--primary-font);
+	font-family: var(--primary-font);
 }
 
 /* apply link style */
 a {
-  text-decoration: none;
-  font-family: var(--primary-font);
-  color: var(--link-color);
+	text-decoration: none;
+	font-family: var(--primary-font);
+	color: var(--link-color);
 }
 
 a:hover {
-  color: var(--tertiary-color);
+	color: var(--tertiary-color);
 }
 
 /* button style */
 button {
-  padding: 0.5rem;
+	padding: 0.5rem;
 }
 
 /* main grid wrapper */
 .container_grid {
-  display: grid;
-  grid-template-columns: 1fr;
+	display: grid;
+	grid-template-columns: 1fr;
 }
 
 /* header style */
 header {
-  text-align: center;
-  margin-top: 3rem;
+	text-align: center;
+	margin-top: 3rem;
 }
 
+/* student stats grid */
 .student_stats {
-  color: yellow;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-gap: 1rem;
+	display: grid;
+	background-color: hotpink;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	margin: 2rem;
+	padding: 2rem;
+	box-shadow: 14px 13px 0px -4px var(--tertiary-color);
 }
 
-.student_stats > h3 {
-  grid-column: 1 / -1;
+th {
+	grid-column: 1 / -1;
 }
 
 /* student list grid */
 #student_section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  margin: 2rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	margin: 2rem;
 }
 
 /* single student style */
 .single_student {
-  background: var(--secondary-color);
-  margin: 1rem;
-  padding: 1rem;
-  box-shadow: 14px 13px 0px -4px var(--tertiary-color);
+	background: var(--secondary-color);
+	margin: 1rem;
+	padding: 1rem;
+	box-shadow: 14px 13px 0px -4px var(--tertiary-color);
 }
 
 /* modal background */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgba(0, 0, 0, 0.4);
+	/* Black w/ opacity */
 }
 
 /* modal content */
 .modal_content {
-  background-color: #fff;
-  margin: auto;
-  padding: 2rem;
-  border: 1.5rem solid var(--primary-color);
-  width: 80%;
+	background-color: #fff;
+	margin: auto;
+	padding: 2rem;
+	border: 1.5rem solid var(--primary-color);
+	width: 80%;
 }
 
 .modal_name {
-  font-family: var(--primary-font);
+	font-family: var(--primary-font);
 }
 
 .modal_house {
-  color: var(--tertiary-color);
-  margin-top: 0.5rem;
+	color: var(--tertiary-color);
+	margin-top: 0.5rem;
 }
 
 /* modal close button */
 .close {
-  color: var(--tertiary-color);
-  float: right;
-  font-size: 4rem;
-  font-weight: bold;
+	color: var(--tertiary-color);
+	float: right;
+	font-size: 4rem;
+	font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 /* hide class for modal */
 .hide {
-  display: none;
+	display: none;
 }
