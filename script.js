@@ -2,10 +2,11 @@
 
 window.addEventListener("DOMContentLoaded", start);
 
-// global array for fixed students
 const allStudents = [];
 let filteredStudentsArray = [];
 const missingPhoto = "";
+let studentStatsGryffindor = [];
+let studentStatsRavenclaw = [];
 
 // object prototype for fixed students
 const studentName = {
@@ -20,7 +21,7 @@ const studentName = {
 
 // start function to listen for events
 function start() {
-  console.log("start");
+  // console.log("start");
   document.querySelector("[data-filter='*']").addEventListener("click", filterAll);
   document.querySelector("[data-filter='gryffindor']").addEventListener("click", filterGryffindor);
   document.querySelector("[data-filter='ravenclaw']").addEventListener("click", filterRavenclaw);
@@ -40,18 +41,18 @@ function getStudents() {
 
 // fetch blood statuses from API
 function fetchBloodData(allStudents) {
-  console.log("fetchBloodData");
+  // console.log("fetchBloodData");
   fetch("https://petlatkea.dk/2020/hogwarts/families.json")
     .then(res => res.json())
     .then(data => {
       assignBloodStatus(data.half, allStudents);
-      console.log(allStudents);
+      // console.log(allStudents);
     });
 }
 
 // assign blood status
 function assignBloodStatus(bloodStatuses, students) {
-  console.log("assignBloodStatus");
+  // console.log("assignBloodStatus");
   students.forEach(student => {
     if (bloodStatuses.includes(student.lastName)) {
       student.bloodStatus = "half";
@@ -75,9 +76,8 @@ function fixStudents(studentList) {
       .split(" ");
     // for house - trim whitespace and change to lowercase
     let house = jsonObject.house.trim().toLowerCase();
-    let surname =
-      // capitalize first letters of house and first name
-      (student.house = capitalizeFirstLetter(house));
+    // capitalize first letters of house and first name
+    student.house = capitalizeFirstLetter(house);
     student.firstName = capitalizeFirstLetter(fullname[0]);
     // if full name is equal to 2 strings - capitalize first letter of 2nd string
     if (fullname.length == 2) {
@@ -94,7 +94,7 @@ function fixStudents(studentList) {
     }
     // add student avatar photo
     student.image = "http://www.lovethatwillnotdie.com/hogwarts/avatars/" + student.lastName.toLowerCase() + "_" + student.firstName[0].toLowerCase() + ".png";
-    console.log(surname);
+
     // add student house crest
     student.crest = "http://www.lovethatwillnotdie.com/hogwarts/crests/" + student.house.toLowerCase() + ".png";
 
@@ -111,17 +111,41 @@ function fixStudents(studentList) {
   });
   // show fixed students
   allStudents.forEach(showStudents);
+  gryffindorStats();
+  ravenclawStats();
 }
 
-//capitalize first letter and add rest of first string
+// capitalize first letter and add rest of first string
 function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+// function to get Gryffindor house length
+function gryffindorStats() {
+  console.log("gryffindorStats");
+  allStudents.forEach(student => {
+    if (student.house.toLowerCase() === "gryffindor") {
+      studentStatsGryffindor.push(student);
+    }
+  });
+  console.log(studentStatsGryffindor.length);
+}
+
+// function to get Ravenclaw house length
+function ravenclawStats() {
+  console.log("ravenclawStats");
+  allStudents.forEach(student => {
+    if (student.house.toLowerCase() === "ravenclaw") {
+      studentStatsRavenclaw.push(student);
+    }
+  });
+  console.log(studentStatsRavenclaw.length);
 }
 
 // function to filter only Gryffindor
 function filterGryffindor(student) {
   filteredStudentsArray = [];
-  console.log("filterGryffindor");
+  // console.log("filterGryffindor");
   allStudents.forEach(student => {
     if (student.house.toLowerCase() === "gryffindor") {
       filteredStudentsArray.push(student);
@@ -135,7 +159,7 @@ function filterGryffindor(student) {
 // function to filter only Ravenclaw
 function filterRavenclaw(student) {
   filteredStudentsArray = [];
-  console.log("filterRavenclaw");
+  // console.log("filterRavenclaw");
   allStudents.forEach(student => {
     if (student.house.toLowerCase() === "ravenclaw") {
       filteredStudentsArray.push(student);
@@ -149,7 +173,7 @@ function filterRavenclaw(student) {
 // function to filter only Hufflepuff
 function filterHufflepuff(student) {
   filteredStudentsArray = [];
-  console.log("filterHufflepuff");
+  // console.log("filterHufflepuff");
   allStudents.forEach(student => {
     if (student.house.toLowerCase() === "hufflepuff") {
       filteredStudentsArray.push(student);
@@ -163,7 +187,7 @@ function filterHufflepuff(student) {
 // function to filter only Slytherin
 function filterSlytherin(student) {
   filteredStudentsArray = [];
-  console.log("filterSlytherin");
+  // console.log("filterSlytherin");
   allStudents.forEach(student => {
     if (student.house.toLowerCase() === "slytherin") {
       filteredStudentsArray.push(student);
@@ -177,7 +201,7 @@ function filterSlytherin(student) {
 // function to filter all
 function filterAll(student) {
   filteredStudentsArray = [];
-  console.log("filterAll");
+  // console.log("filterAll");
   allStudents.forEach(student => {
     if (student.house.toLowerCase() === "hufflepuff" || "slytherin" || "gryffindor" || "ravenclaw") {
       filteredStudentsArray.push(student);
@@ -190,7 +214,7 @@ function filterAll(student) {
 
 // show students
 function showStudents(studentName) {
-  console.log("showStudents");
+  // console.log("showStudents");
   const template = document.querySelector("template").content;
   const studentCopy = template.cloneNode(true);
   studentCopy.querySelector(".first_name").textContent = studentName.firstName;
