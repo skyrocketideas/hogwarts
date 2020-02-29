@@ -5,8 +5,13 @@ window.addEventListener("DOMContentLoaded", start);
 const allStudents = [];
 let filteredStudentsArray = [];
 const missingPhoto = "";
-let studentStatsGryffindor = [];
-let studentStatsRavenclaw = [];
+
+// stats variables arrays
+const studentStatsGryffindor = [];
+const studentStatsRavenclaw = [];
+const studentStatsHufflepuff = [];
+const studentStatsSlytherin = [];
+const studentStatsAll = [];
 
 // object prototype for fixed students
 const studentName = {
@@ -112,7 +117,6 @@ function fixStudents(studentList) {
   // show fixed students
   allStudents.forEach(showStudents);
   gryffindorStats();
-  ravenclawStats();
 }
 
 // capitalize first letter and add rest of first string
@@ -120,26 +124,71 @@ function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-// function to get Gryffindor house length
+// function to get Gryffindor house length and append to stats
 function gryffindorStats() {
-  console.log("gryffindorStats");
+  // console.log("gryffindorStats");
   allStudents.forEach(student => {
     if (student.house.toLowerCase() === "gryffindor") {
       studentStatsGryffindor.push(student);
     }
   });
-  console.log(studentStatsGryffindor.length);
+  const numberInGryffindor = studentStatsGryffindor.length;
+  console.log(numberInGryffindor);
+  document.getElementById("numberInGryffindor").textContent = numberInGryffindor;
+  ravenclawStats();
 }
 
-// function to get Ravenclaw house length
+// function to get Ravenclaw house length and append to stats
 function ravenclawStats() {
-  console.log("ravenclawStats");
+  // console.log("ravenclawStats");
   allStudents.forEach(student => {
     if (student.house.toLowerCase() === "ravenclaw") {
       studentStatsRavenclaw.push(student);
     }
   });
+  const numberInRavenclaw = studentStatsRavenclaw.length;
   console.log(studentStatsRavenclaw.length);
+  document.getElementById("numberInRavenclaw").innerText = numberInRavenclaw;
+  hufflepuffStats();
+}
+
+hufflepuffStats();
+// function to get Hufflepuff house length and append to stats
+function hufflepuffStats() {
+  // console.log("hufflepuffStats");
+  allStudents.forEach(student => {
+    if (student.house.toLowerCase() === "hufflepuff") {
+      studentStatsHufflepuff.push(student);
+    }
+  });
+  const numberInHufflepuff = studentStatsHufflepuff.length;
+  document.getElementById("numberInHufflepuff").textContent = numberInHufflepuff;
+  slytherinStats();
+}
+
+// function to get Slytherin house length and append to stats
+function slytherinStats() {
+  // console.log("slytherinStats");
+  allStudents.forEach(student => {
+    if (student.house.toLowerCase() === "slytherin") {
+      studentStatsSlytherin.push(student);
+    }
+  });
+  const numberInSlytherin = studentStatsSlytherin.length;
+  document.getElementById("numberInSlytherin").innerText = numberInSlytherin;
+  allStats();
+}
+
+// function to get all house length and append to stats
+function allStats() {
+  // console.log("allStats");
+  allStudents.forEach(student => {
+    if (student.house.toLowerCase() === "hufflepuff" || "slytherin" || "gryffindor" || "ravenclaw") {
+      studentStatsAll.push(student);
+    }
+  });
+  const numberInAll = studentStatsAll.length;
+  document.getElementById("numberInAll").innerText = numberInAll;
 }
 
 // function to filter only Gryffindor
