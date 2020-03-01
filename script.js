@@ -6,6 +6,8 @@ const allStudents = [];
 let filteredStudentsArray = [];
 let expelledStudents = [];
 let prefectStudents = [];
+// let allStudentsArray = new Array();
+let allStudentsArray = [];
 const missingPhoto = "";
 
 // statistics variables arrays
@@ -37,6 +39,7 @@ function start() {
 	document.querySelector("[data-filter='ravenclaw']").addEventListener("click", filterRavenclaw);
 	document.querySelector("[data-filter='hufflepuff']").addEventListener("click", filterHufflepuff);
 	document.querySelector("[data-filter='slytherin']").addEventListener("click", filterSlytherin);
+	document.querySelector("#sorting").addEventListener("change", sortStudents);
 	getStudents();
 }
 
@@ -55,7 +58,7 @@ function fetchBloodData(allStudents) {
 	fetch("https://petlatkea.dk/2020/hogwarts/families.json")
 		.then(res => res.json())
 		.then(data => {
-			assignBloodStatus(data.half, allStudents);
+			assignBloodStatus(data.pure, allStudents);
 			// console.log(allStudents);
 		});
 }
@@ -199,8 +202,47 @@ function allStats() {
 
 // function to get displayed students and append to stats
 function studentsDisplayedStats() {
+	console.log("studentsDisplayedStats");
 	const studentsDisplayed = document.querySelector("#numberDisplayed");
 	studentsDisplayed.textContent = filteredStudentsArray.length;
+}
+
+sortStudents();
+// function to sort students
+function sortStudents() {
+	console.log("sortStudents");
+	let select = document.querySelector("#sorting");
+	let selected = select.options[select.selectedIndex].value;
+	console.log(selected);
+	if (selected == "fullName") {
+		showStudents(allStudentsArray.sort(checkFullName));
+		console.log("full name selected");
+	} else {
+		if (selected == "houseName") {
+			showStudents(allStudentsArray.sort(checkHouse));
+			console.log("house name selected");
+		}
+	}
+}
+
+// function check full name
+function checkFullName(student1, student2) {
+	console.log("checkFullName");
+	if (student1.fullname.toLowerCase().trim() < student2.fullname.toLowerCase().trim()) {
+		return -1;
+	} else {
+		return 1;
+	}
+}
+
+// function to check house
+function checkHouse(house1, house2) {
+	console.log("checkHouse");
+	if (house1.house.toLowerCase().trim() < house2.house.toLowerCase().trim()) {
+		return -1;
+	} else {
+		return 1;
+	}
 }
 
 // function to filter only Gryffindor
@@ -329,8 +371,8 @@ function expelStudent(student) {
 	expelledStudents.push(student);
 	allStudents.splice(indexOfStudent, 1);
 	// console.log(allStudents);
-	// const numberOfExpelled = expelledStudents.length;
-	// document.getElementById("expelledStudents").textContent = numberOfExpelled;
+	const numberOfExpelled = expelledStudents.length;
+	document.getElementById("expelledStudents").textContent = numberOfExpelled;
 }
 
 function makePrefect(student) {
