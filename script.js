@@ -194,6 +194,13 @@ function allStats() {
 	});
 	const numberInAll = studentStatsAll.length;
 	document.getElementById("numberInAll").textContent = numberInAll;
+	studentsDisplayedStats();
+}
+
+// function to get displayed students and append to stats
+function studentsDisplayedStats() {
+	const studentsDisplayed = document.querySelector("#numberDisplayed");
+	studentsDisplayed.textContent = filteredStudentsArray.length;
 }
 
 // function to filter only Gryffindor
